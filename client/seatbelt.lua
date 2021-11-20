@@ -2,15 +2,15 @@ SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity,
 local seatbeltOn = false
 local QBCore = exports['qb-core']:GetCoreObject()
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(10)
+        Wait(10)
         if IsPedInAnyVehicle(PlayerPedId()) and seatbeltOn then
             DisableControlAction(0, 75, true) -- Disable exit vehicle when stop
             DisableControlAction(27, 75, true) -- Disable exit vehicle when Driving
         else
             seatbeltOn = false
-            Citizen.Wait(1000)
+            Wait(1000)
         end
         if Config.ShowBelt == true then
             if seatbeltOn then
